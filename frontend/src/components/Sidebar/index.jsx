@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   return (
     <div>
-      <Link
+      {/* <Link
         to={paths.home()}
         className="flex shrink-0 max-w-[55%] items-center justify-start mx-[38px] my-[18px]"
         aria-label="Home"
@@ -36,10 +36,10 @@ export default function Sidebar() {
           alt="Logo"
           className="rounded max-h-[24px] object-contain"
         />
-      </Link>
+      </Link> */}
       <div
         ref={sidebarRef}
-        className="relative m-[16px] rounded-[16px] bg-sidebar border-2 border-outline min-w-[250px] p-[10px] h-[calc(100%-76px)]"
+        className="relative m-[16px] rounded-[16px] bg-sidebar min-w-[250px] p-[10px] h-[calc(100%-76px)]"
       >
         <div className="flex flex-col h-full overflow-x-hidden">
           <div className="flex-grow flex flex-col min-w-[235px]">
@@ -49,7 +49,7 @@ export default function Sidebar() {
                   {(!user || user?.role !== "default") && (
                     <button
                       onClick={showNewWsModal}
-                      className="flex flex-grow w-[75%] h-[44px] gap-x-2 py-[5px] px-2.5 mb-2 bg-white rounded-[8px] text-sidebar justify-center items-center hover:bg-opacity-80 transition-all duration-300"
+                      className="flex flex-grow w-[75%] h-[44px] gap-x-2 py-[5px] px-2.5 mb-2 bg-bs-primary rounded-[8px] text-white justify-center items-center hover:bg-opacity-80 transition-all duration-300"
                     >
                       <Plus size={18} weight="bold" />
                       <p className="text-sidebar text-sm font-semibold">

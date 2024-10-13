@@ -171,25 +171,25 @@ function NewThreadButton({ workspace }) {
   return (
     <button
       onClick={onClick}
-      className="w-full relative flex h-[40px] items-center border-none hover:bg-slate-600/20 rounded-lg"
+      className="w-full relative flex h-[40px] items-center border-none hover:bg-bs-secondary-hover/20 rounded-lg"
     >
       <div className="flex w-full gap-x-2 items-center pl-4">
-        <div className="bg-zinc-600 p-2 rounded-lg h-[24px] w-[24px] flex items-center justify-center">
+        <div className="bg-bs-primary p-2 rounded-lg h-[24px] w-[24px] flex items-center justify-center">
           {loading ? (
             <CircleNotch
               weight="bold"
               size={14}
-              className="shrink-0 animate-spin text-slate-100"
+              className="shrink-0 animate-spin text-white"
             />
           ) : (
-            <Plus weight="bold" size={14} className="shrink-0 text-slate-100" />
+            <Plus weight="bold" size={14} className="shrink-0 text-white" />
           )}
         </div>
 
         {loading ? (
-          <p className="text-left text-slate-100 text-sm">Starting Thread...</p>
+          <p className="text-left text-bs-primary text-sm">Starting Thread...</p>
         ) : (
-          <p className="text-left text-slate-100 text-sm">New Thread</p>
+          <p className="text-left text-bs-primary text-sm">New Thread</p>
         )}
       </div>
     </button>

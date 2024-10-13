@@ -33,7 +33,7 @@ export default function ThreadItem({
 
   return (
     <div
-      className="w-full relative flex h-[38px] items-center border-none hover:bg-slate-600/20 rounded-lg"
+      className="w-full relative flex h-[38px] items-center border-none hover:bg-bs-secondary-hover/20 rounded-lg"
       role="listitem"
     >
       {/* Curved line Element and leader if required */}
@@ -41,7 +41,7 @@ export default function ThreadItem({
         style={{ width: THREAD_CALLOUT_DETAIL_WIDTH / 2 }}
         className={`${
           isActive
-            ? "border-l-2 border-b-2 border-white"
+            ? "border-l-2 border-b-2 border-dark-text"
             : "border-l border-b border-slate-300"
         } h-[50%] absolute top-0 z-10 left-2 rounded-bl-lg`}
       ></div>
@@ -51,7 +51,7 @@ export default function ThreadItem({
           style={{ width: THREAD_CALLOUT_DETAIL_WIDTH / 2 }}
           className={`${
             idx <= activeIdx && !isActive
-              ? "border-l-2 border-white"
+              ? "border-l-2 border-dark-text"
               : "border-l border-slate-300"
           } h-[100%] absolute top-0 z-1 left-2`}
         ></div>
@@ -93,7 +93,7 @@ export default function ThreadItem({
           >
             <p
               className={`text-left text-sm ${
-                isActive ? "font-medium text-white" : "text-slate-400"
+                isActive ? "font-medium text-dark" : "text-slate-400"
               }`}
             >
               {truncate(thread.name, 25)}

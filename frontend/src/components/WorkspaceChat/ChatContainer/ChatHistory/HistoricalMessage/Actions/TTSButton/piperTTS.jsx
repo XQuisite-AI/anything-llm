@@ -3,7 +3,7 @@ import { SpeakerHigh, PauseCircle, CircleNotch } from "@phosphor-icons/react";
 import { Tooltip } from "react-tooltip";
 import PiperTTSClient from "@/utils/piperTTS";
 
-export default function PiperTTS({ voiceId = null, message }) {
+export default function PiperTTS({ voiceId = null, message, role = null }) {
   const playerRef = useRef(null);
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);

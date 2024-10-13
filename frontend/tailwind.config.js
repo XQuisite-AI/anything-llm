@@ -23,10 +23,10 @@ export default {
       colors: {
         "black-900": "#141414",
         accent: "#3D4147",
-        "sidebar-button": "#31353A",
-        sidebar: "#25272C",
-        "historical-msg-system": "rgba(255, 255, 255, 0.05);",
-        "historical-msg-user": "#2C2F35",
+        "sidebar-button": "#3361AC",
+        sidebar: "#FFFFFF",
+        "historical-msg-system": "#E8AF30",
+        "historical-msg-user": "#E7E6DD",
         outline: "#4E5153",
         "primary-button": "#46C8FF",
         secondary: "#2C2F36",
@@ -43,7 +43,11 @@ export default {
         error: "#B42318",
         warn: "#854708",
         success: "#05603A",
-        darker: "#F4F4F4"
+        darker: "#F4F4F4",
+        "bs-primary": '#3361AC',
+        "bs-secondary": '#E8C766',
+        "bs-secondary-active": '#E8AF30',
+        "bs-secondary-hover": '#E7E6DD'
       },
       backgroundImage: {
         "preference-gradient":
@@ -63,7 +67,7 @@ export default {
         "workspace-item-gradient":
           "linear-gradient(90deg, #3D4147 0%, #2C2F35 100%)",
         "workspace-item-selected-gradient":
-          "linear-gradient(90deg, #5B616A 0%, #3F434B 100%)",
+          "linear-gradient(90deg, #E8C766 0%, #E8AF30 100%)",
         "switch-selected": "linear-gradient(146deg, #5B616A 0%, #3F434B 100%)"
       },
       fontFamily: {

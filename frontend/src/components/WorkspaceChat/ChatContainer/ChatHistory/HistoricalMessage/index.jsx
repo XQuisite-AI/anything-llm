@@ -11,6 +11,7 @@ import createDOMPurify from "dompurify";
 import { EditMessageForm, useEditMessage } from "./Actions/EditMessage";
 import { useWatchDeleteMessage } from "./Actions/DeleteMessage";
 import TTSMessage from "./Actions/TTSButton";
+import brandLogo from '../../../../../media/logo/brantas.png';
 
 const DOMPurify = createDOMPurify(window);
 const HistoricalMessage = ({
@@ -47,7 +48,7 @@ const HistoricalMessage = ({
           role === "user" ? USER_BACKGROUND_COLOR : AI_BACKGROUND_COLOR
         }`}
       >
-        <div className="py-8 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+        <div className="py-8 px-4 w-full flex gap-x-5 flex-col">
           <div className="flex gap-x-5">
             <ProfileImage role={role} workspace={workspace} />
             <div className="p-2 rounded-lg bg-red-50 text-red-500">
@@ -72,11 +73,13 @@ const HistoricalMessage = ({
       onAnimationEnd={onEndAnimation}
       className={`${
         isDeleted ? "animate-remove" : ""
-      } flex justify-center items-end w-full group ${
+      } flex justify-center items-end group mb-3 md:rounded-[16px] w-[80%] ${
         role === "user" ? USER_BACKGROUND_COLOR : AI_BACKGROUND_COLOR
+      } ${
+        role === "user" ? 'self-end' : ''
       }`}
     >
-      <div className="py-8 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+      <div className="py-8 px-4 w-full flex gap-x-5 flex-col">
         <div className="flex gap-x-5">
           <div className="flex flex-col items-center">
             <ProfileImage role={role} workspace={workspace} />
@@ -85,6 +88,7 @@ const HistoricalMessage = ({
                 slug={workspace?.slug}
                 chatId={chatId}
                 message={message}
+                role={role}
               />
             </div>
           </div>
@@ -100,7 +104,7 @@ const HistoricalMessage = ({
           ) : (
             <div className="overflow-x-scroll break-words no-scroll">
               <span
-                className="flex flex-col gap-y-1"
+                className={`flex flex-col gap-y-1 ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(renderMarkdown(message)),
                 }}
@@ -129,13 +133,15 @@ const HistoricalMessage = ({
 };
 
 function ProfileImage({ role, workspace }) {
-  if (role === "assistant" && workspace.pfpUrl) {
+  console.log(role, brandLogo, workspace.pfpUrl);
+  
+  if (role === "assistant") {
     return (
-      <div className="relative w-[35px] h-[35px] rounded-full flex-shrink-0 overflow-hidden">
+      <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden flex items-center justify-center rounded-full bg-white">
         <img
-          src={workspace.pfpUrl}
+          src={brandLogo}
           alt="Workspace profile picture"
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-full bg-white"
+          className="w-[20px] h-[20px] object-content"
         />
       </div>
     );

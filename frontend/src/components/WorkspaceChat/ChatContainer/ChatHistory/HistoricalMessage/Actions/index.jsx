@@ -28,7 +28,7 @@ const Actions = ({
   return (
     <div className="flex w-full justify-between items-center">
       <div className="flex justify-start items-center gap-x-[8px]">
-        <CopyMessage message={message} />
+        <CopyMessage message={message} role={role} />
         <div className="md:group-hover:opacity-100 transition-all duration-300 md:opacity-0 flex justify-start items-center gap-x-[8px]">
           <EditMessageAction
             chatId={chatId}
@@ -40,6 +40,7 @@ const Actions = ({
               regenerateMessage={regenerateMessage}
               slug={slug}
               chatId={chatId}
+              role={role}
             />
           )}
           {chatId && role !== "user" && !isEditing && (
@@ -49,6 +50,7 @@ const Actions = ({
               tooltipId={`${chatId}-thumbs-up`}
               tooltipContent="Good response"
               IconComponent={ThumbsUp}
+              role={role}
             />
           )}
           <ActionMenu
@@ -69,6 +71,7 @@ function FeedbackButton({
   tooltipId,
   tooltipContent,
   IconComponent,
+  role = null
 }) {
   return (
     <div className="mt-3 relative">
@@ -76,7 +79,7 @@ function FeedbackButton({
         onClick={handleFeedback}
         data-tooltip-id={tooltipId}
         data-tooltip-content={tooltipContent}
-        className="text-zinc-300"
+        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
         aria-label={tooltipContent}
       >
         <IconComponent
@@ -95,7 +98,7 @@ function FeedbackButton({
   );
 }
 
-function CopyMessage({ message }) {
+function CopyMessage({ message, role = null }) {
   const { copied, copyText } = useCopyText();
 
   return (
@@ -105,7 +108,7 @@ function CopyMessage({ message }) {
           onClick={() => copyText(message)}
           data-tooltip-id="copy-assistant-text"
           data-tooltip-content="Copy"
-          className="text-zinc-300"
+          className={`${role == 'user' ? 'text-dark-text' : 'text-white'}`}
           aria-label="Copy"
         >
           {copied ? (
@@ -125,7 +128,7 @@ function CopyMessage({ message }) {
   );
 }
 
-function RegenerateMessage({ regenerateMessage, chatId }) {
+function RegenerateMessage({ regenerateMessage, chatId, role = null }) {
   if (!chatId) return null;
   return (
     <div className="mt-3 relative">
@@ -133,7 +136,7 @@ function RegenerateMessage({ regenerateMessage, chatId }) {
         onClick={() => regenerateMessage(chatId)}
         data-tooltip-id="regenerate-assistant-text"
         data-tooltip-content="Regenerate response"
-        className="border-none text-zinc-300"
+        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
         aria-label="Regenerate"
       >
         <ArrowsClockwise size={20} className="mb-1" weight="fill" />

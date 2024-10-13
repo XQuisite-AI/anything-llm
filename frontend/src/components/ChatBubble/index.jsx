@@ -9,7 +9,7 @@ export default function ChatBubble({ message, type, popMsg }) {
 
   return (
     <div className={`flex justify-center items-end w-full ${backgroundColor}`}>
-      <div className={`py-8 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}>
+      <div className={`py-8 px-4 w-full flex gap-x-5 flex-col`}>
         <div className="flex gap-x-5">
           <UserIcon
             user={{ uid: isUser ? userFromStorage()?.username : "system" }}

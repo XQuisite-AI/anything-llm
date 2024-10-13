@@ -4,7 +4,7 @@ import AsyncTTSMessage from "./asyncTts";
 import PiperTTSMessage from "./piperTTS";
 import System from "@/models/system";
 
-export default function TTSMessage({ slug, chatId, message }) {
+export default function TTSMessage({ slug, chatId, message, role = null }) {
   const [settings, setSettings] = useState({});
   const [provider, setProvider] = useState("native");
   const [loading, setLoading] = useState(true);
@@ -24,15 +24,16 @@ export default function TTSMessage({ slug, chatId, message }) {
   switch (provider) {
     case "openai":
     case "elevenlabs":
-      return <AsyncTTSMessage slug={slug} chatId={chatId} />;
+      return <AsyncTTSMessage slug={slug} chatId={chatId} role={role} />;
     case "piper_local":
       return (
         <PiperTTSMessage
           voiceId={settings?.TTSPiperTTSVoiceModel}
           message={message}
+          role={role}
         />
       );
     default:
-      return <NativeTTSMessage message={message} />;
+      return <NativeTTSMessage message={message} role={role}/>;
   }
 }

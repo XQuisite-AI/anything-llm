@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { SpeakerHigh, PauseCircle } from "@phosphor-icons/react";
 import { Tooltip } from "react-tooltip";
+import { userFromStorage } from "@/utils/request";
 
-export default function NativeTTSMessage({ message }) {
+export default function NativeTTSMessage({ message, role = null }) {
   const [speaking, setSpeaking] = useState(false);
   const [supported, setSupported] = useState(false);
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function NativeTTSMessage({ message }) {
   }
 
   if (!supported) return null;
+  
   return (
     <div className="mt-3 relative">
       <button
@@ -41,7 +43,7 @@ export default function NativeTTSMessage({ message }) {
         data-tooltip-content={
           speaking ? "Pause TTS speech of message" : "TTS Speak message"
         }
-        className="border-none text-zinc-300"
+        className={`border-none ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
         aria-label={speaking ? "Pause speech" : "Speak message"}
       >
         {speaking ? (

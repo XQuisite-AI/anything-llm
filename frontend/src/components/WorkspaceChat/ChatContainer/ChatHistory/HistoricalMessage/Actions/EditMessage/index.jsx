@@ -50,7 +50,7 @@ export function EditMessageAction({ chatId = null, role, isEditing }) {
         data-tooltip-content={`Edit ${
           role === "user" ? "Prompt" : "Response"
         } `}
-        className="border-none text-zinc-300"
+        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
         aria-label={`Edit ${role === "user" ? "Prompt" : "Response"}`}
       >
         <Pencil size={21} className="mb-1" />
@@ -104,20 +104,20 @@ export function EditMessageForm({
         name="editedMessage"
         className={`w-full rounded ${
           role === "user" ? USER_BACKGROUND_COLOR : AI_BACKGROUND_COLOR
-        } border border-white/20 active:outline-none focus:outline-none focus:ring-0 pr-16 pl-1.5 pt-1.5 resize-y`}
+        } border border-dark/20 active:outline-none focus:outline-none focus:ring-0 pr-16 pl-1.5 pt-1.5 resize-y ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
         defaultValue={message}
         onChange={adjustTextArea}
       />
       <div className="mt-3 flex justify-center">
         <button
           type="submit"
-          className="px-2 py-1 bg-gray-200 text-gray-700 font-medium rounded-md mr-2 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="px-2 py-1 bg-bs-primary text-white font-medium rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Save & Submit
         </button>
         <button
           type="button"
-          className="px-2 py-1 bg-historical-msg-system text-white font-medium rounded-md hover:bg-historical-msg-user/90 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+          className={`px-2 py-1 font-medium rounded-md hover:bg-historical-msg-user/90 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
           onClick={cancelEdits}
         >
           Cancel

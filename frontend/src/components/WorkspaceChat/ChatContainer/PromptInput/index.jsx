@@ -147,12 +147,12 @@ export default function PromptInput({
       />
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-y-1 rounded-t-lg md:w-3/4 w-full mx-auto max-w-xl items-center"
+        className="rounded-t-lg w-full items-center"
       >
-        <div className="flex items-center rounded-lg md:mb-4">
-          <div className="w-[95vw] md:w-[635px] bg-main-gradient shadow-2xl border border-white/50 rounded-2xl flex flex-col px-4 overflow-hidden">
+        <div className="w-100 border-t-2 border-bs-secondary-hover/50 flex flex-col px-4">
             <AttachmentManager attachments={attachments} />
-            <div className="flex items-center w-full border-b-2 border-gray-500/50">
+            <div className="flex items-center w-full gap-2">
+              <AttachItem />
               <textarea
                 ref={textareaRef}
                 onChange={(e) => {
@@ -172,17 +172,18 @@ export default function PromptInput({
                   adjustTextArea(e);
                 }}
                 value={promptInput}
-                className="cursor-text max-h-[50vh] md:max-h-[350px] md:min-h-[40px] mx-2 md:mx-0 py-2 w-full text-[16px] md:text-md text-white bg-transparent placeholder:text-white/60 resize-none active:outline-none focus:outline-none flex-grow"
+                className="cursor-text max-h-[50vh] md:max-h-[350px] md:min-h-[40px] mx-2 md:mx-0 w-full text-[16px] md:text-md text-bs-primary bg-transparent placeholder:text-dark-text/60 resize-none active:outline-none focus:outline-none flex-grow pt-5"
                 placeholder={"Send a message"}
               />
               {buttonDisabled ? (
                 <StopGenerationButton />
               ) : (
                 <>
+                  <SpeechToText sendCommand={sendCommand} />
                   <button
                     ref={formRef}
                     type="submit"
-                    className="inline-flex justify-center rounded-2xl cursor-pointer text-white/60 hover:text-white group ml-4"
+                    className="inline-flex justify-center rounded-2xl cursor-pointer text-bs-primary/60 hover:text-bs-primary group ml-4"
                     data-tooltip-id="send-prompt"
                     data-tooltip-content="Send prompt message to workspace"
                     aria-label="Send prompt message to workspace"
@@ -199,25 +200,7 @@ export default function PromptInput({
                 </>
               )}
             </div>
-            <div className="flex justify-between py-3.5">
-              <div className="flex gap-x-2">
-                <AttachItem />
-                <SlashCommandsButton
-                  showing={showSlashCommand}
-                  setShowSlashCommand={setShowSlashCommand}
-                />
-                <AvailableAgentsButton
-                  showing={showAgents}
-                  setShowAgents={setShowAgents}
-                />
-                <TextSizeButton />
-              </div>
-              <div className="flex gap-x-2">
-                <SpeechToText sendCommand={sendCommand} />
-              </div>
-            </div>
           </div>
-        </div>
       </form>
     </div>
   );

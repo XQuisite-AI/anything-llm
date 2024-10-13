@@ -6,6 +6,7 @@ import Workspace from "@/models/workspace";
 import PasswordModal, { usePasswordModal } from "@/components/Modals/Password";
 import { isMobile } from "react-device-detect";
 import { FullScreenLoader } from "@/components/Preloader";
+import Header from "../../components/Header"; // Import the Header component
 
 export default function WorkspaceChat() {
   const { loading, requiresAuth, mode } = usePasswordModal();
@@ -22,6 +23,12 @@ function ShowWorkspaceChat() {
   const { slug } = useParams();
   const [workspace, setWorkspace] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Set to false for collapsed by default
+  const [isCollapsed, setIsCollapsed] = useState(false); // State for sidebar collapse
+
+  const toggleSidebar = () => {
+    setIsSidebarVisible(prev => !prev); // Toggle sidebar visibility
+  };
 
   useEffect(() => {
     async function getWorkspace() {
@@ -41,12 +48,20 @@ function ShowWorkspaceChat() {
       setLoading(false);
     }
     getWorkspace();
-  }, []);
+  }, [slug]);
 
   return (
     <>
-      <div className="w-screen h-screen overflow-hidden bg-sidebar flex">
-        {!isMobile && <Sidebar />}
+      {/* Pass isCollapsed, setIsCollapsed, and toggleSidebar to the Header */}
+      <Header 
+        isCollapsed={isCollapsed} 
+        setIsCollapsed={setIsCollapsed} 
+        toggleSidebar={toggleSidebar} 
+      />
+
+      {/* Main layout with conditional sidebar rendering */}
+      <div className="w-100 overflow-hidden bg-sidebar flex" style={{ height: `calc(100vh - 65px)` }}>
+        {!isMobile && isSidebarVisible && <Sidebar />} {/* Sidebar is toggled */}
         <WorkspaceChatContainer loading={loading} workspace={workspace} />
       </div>
     </>

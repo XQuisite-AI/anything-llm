@@ -95,7 +95,7 @@ export default function SettingsSidebar() {
                 <div className="flex gap-x-2 items-center text-slate-500 shrink-0">
                   <a
                     href={paths.home()}
-                    className="transition-all duration-300 p-2 rounded-full text-white bg-sidebar-button hover:bg-menu-item-selected-gradient hover:border-slate-100 hover:border-opacity-50 border-transparent border"
+                    className="transition-all duration-300 p-2 rounded-full bg-sidebar-button hover:bg-menu-item-selected-gradient hover:border-slate-100 hover:border-opacity-50 border-transparent border"
                   >
                     <House className="h-4 w-4" />
                   </a>
@@ -114,7 +114,7 @@ export default function SettingsSidebar() {
                         user?.hasOwnProperty("role") && user.role !== "admin"
                       }
                       to={paths.settings.privacy()}
-                      className="text-darker hover:text-white text-xs leading-[18px] mx-3"
+                      className=" text-xs leading-[18px] mx-3"
                     >
                       {t("settings.privacy")}
                     </Link>
@@ -134,7 +134,7 @@ export default function SettingsSidebar() {
   return (
     <>
       <div>
-        <Link
+        {/* <Link
           to={paths.home()}
           className="flex shrink-0 max-w-[55%] items-center justify-start mx-[38px] my-[18px]"
         >
@@ -144,13 +144,13 @@ export default function SettingsSidebar() {
             className="rounded max-h-[24px]"
             style={{ objectFit: "contain" }}
           />
-        </Link>
+        </Link> */}
         <div
           ref={sidebarRef}
-          className="transition-all duration-500 relative m-[16px] rounded-[16px] bg-sidebar border-2 border-outline min-w-[250px] p-[10px] h-[calc(100%-76px)]"
+          className="transition-all duration-500 relative m-[16px] rounded-[16px] bg-sidebar min-w-[250px] p-[10px] h-[calc(100%-76px)]"
         >
           <div className="w-full h-full flex flex-col overflow-x-hidden items-between min-w-[235px]">
-            <div className="text-white text-opacity-60 text-sm font-medium uppercase mt-[4px] mb-0 ml-2">
+            <div className="text-dark-text text-sm font-medium uppercase mt-[4px] mb-0 ml-2">
               {t("settings.title")}
             </div>
             <div className="relative h-[calc(100%-60px)] flex flex-col w-full justify-between pt-[10px] overflow-y-scroll no-scroll">
@@ -164,7 +164,7 @@ export default function SettingsSidebar() {
                       user?.hasOwnProperty("role") && user.role !== "admin"
                     }
                     to={paths.settings.privacy()}
-                    className="text-darker hover:text-white text-xs leading-[18px] mx-3"
+                    className="text-xs leading-[18px] mx-3"
                   >
                     {t("settings.privacy")}
                   </Link>
@@ -200,7 +200,7 @@ function SupportEmail() {
   return (
     <Link
       to={supportEmail}
-      className="text-darker hover:text-white text-xs leading-[18px] mx-3 mt-1"
+      className=" text-xs leading-[18px] mx-3 mt-1"
     >
       {t("settings.contact")}
     </Link>

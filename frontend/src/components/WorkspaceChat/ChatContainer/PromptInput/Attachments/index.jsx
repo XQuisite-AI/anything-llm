@@ -51,11 +51,11 @@ function AttachmentItem({ attachment }) {
         <div
           className={`${iconBgColor} rounded-lg flex items-center justify-center flex-shrink-0 p-1`}
         >
-          <CircleNotch size={30} className="text-white animate-spin" />
+          <CircleNotch size={30} className="text-dark-text animate-spin" />
         </div>
         <div className="flex flex-col w-[130px]">
-          <p className="text-white text-xs font-medium truncate">{file.name}</p>
-          <p className="text-white/60 text-xs font-medium">
+          <p className="text-dark-text text-xs font-medium truncate">{file.name}</p>
+          <p className="text-dark-text/60 text-xs font-medium">
             {humanFileSize(file.size)}
           </p>
         </div>
@@ -79,17 +79,17 @@ function AttachmentItem({ attachment }) {
             >
               <X
                 size={10}
-                className="flex-shrink-0 text-zinc-200 group-hover:text-white"
+                className="flex-shrink-0 text-zinc-200 group-hover:text-dark-text"
               />
             </button>
           </div>
           <div
             className={`bg-error rounded-lg flex items-center justify-center flex-shrink-0 p-1`}
           >
-            <WarningOctagon size={30} className="text-white" />
+            <WarningOctagon size={30} className="text-dark-text" />
           </div>
           <div className="flex flex-col w-[130px]">
-            <p className="text-white text-xs font-medium truncate">
+            <p className="text-dark-text text-xs font-medium truncate">
               {file.name}
             </p>
             <p className="text-red-100 text-xs truncate">
@@ -124,7 +124,7 @@ function AttachmentItem({ attachment }) {
             >
               <X
                 size={10}
-                className="flex-shrink-0 text-zinc-200 group-hover:text-white"
+                className="flex-shrink-0 text-zinc-200 group-hover:text-dark-text"
               />
             </button>
           </div>
@@ -137,14 +137,14 @@ function AttachmentItem({ attachment }) {
             <div
               className={`${iconBgColor} rounded-lg flex items-center justify-center flex-shrink-0 p-1`}
             >
-              <Icon size={30} className="text-white" />
+              <Icon size={30} className="text-dark-text" />
             </div>
           )}
           <div className="flex flex-col w-[130px]">
-            <p className="text-white text-xs font-medium truncate">
+            <p className="text-dark-text text-xs font-medium truncate">
               {file.name}
             </p>
-            <p className="text-white/80 text-xs font-medium">Image attached!</p>
+            <p className="text-dark-text/80 text-xs font-medium">Image attached!</p>
           </div>
         </div>
         <Tooltip
@@ -172,18 +172,18 @@ function AttachmentItem({ attachment }) {
           >
             <X
               size={10}
-              className="flex-shrink-0 text-zinc-200 group-hover:text-white"
+              className="flex-shrink-0 text-zinc-200 group-hover:text-dark-text"
             />
           </button>
         </div>
         <div
           className={`${iconBgColor} rounded-lg flex items-center justify-center flex-shrink-0 p-1`}
         >
-          <Icon size={30} className="text-white" />
+          <Icon size={30} className="text-dark-text" />
         </div>
         <div className="flex flex-col w-[130px]">
-          <p className="text-white text-xs font-medium truncate">{file.name}</p>
-          <p className="text-white/80 text-xs font-medium">File embedded!</p>
+          <p className="text-dark-text text-xs font-medium truncate">{file.name}</p>
+          <p className="text-dark-text/80 text-xs font-medium">File embedded!</p>
         </div>
       </div>
       <Tooltip

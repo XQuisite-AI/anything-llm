@@ -93,12 +93,12 @@ export default function ActiveWorkspaces() {
                 aria-current={isActive ? "page" : ""}
                 className={`
               transition-all duration-[200ms]
-                flex flex-grow w-[75%] gap-x-2 py-[6px] px-[12px] rounded-[4px] text-white justify-start items-center
-                hover:bg-workspace-item-selected-gradient hover:font-bold border-2 border-outline
+                flex flex-grow w-[75%] gap-x-2 py-[6px] px-[12px] rounded-[4px]  justify-start items-center
+                hover:bg-bs-secondary hover:font-bold border-2 border-bs-secondary
                 ${
                   isActive
-                    ? "bg-workspace-item-selected-gradient font-bold"
-                    : ""
+                    ? "text-white bg-bs-secondary font-bold"
+                    : "text-dark-text bg-bs-secondary-hover"
                 }`}
               >
                 <div className="flex flex-row justify-between w-full">
@@ -110,7 +110,7 @@ export default function ActiveWorkspaces() {
                     />
                     <p
                       className={`text-[14px] leading-loose whitespace-nowrap overflow-hidden ${
-                        isActive ? "text-white " : "text-zinc-200"
+                        isActive ? "text-white " : "text-dark-text"
                       }`}
                     >
                       {isActive || isHovered
@@ -122,8 +122,8 @@ export default function ActiveWorkspaces() {
                   user?.role !== "default" ? (
                     <div className="flex items-center gap-x-[2px]">
                       <div
-                        className={`flex hover:bg-[#646768] p-[2px] rounded-[4px] text-[#A7A8A9] hover:text-white ${
-                          uploadHover[workspace.id] ? "bg-[#646768]" : ""
+                        className={`flex hover:bg-bs-secondary-active p-[2px] rounded-[4px] text-white ${
+                          uploadHover[workspace.id] ? "bg-bs-secondary-active" : ""
                         }`}
                       >
                         <button
@@ -159,17 +159,17 @@ export default function ActiveWorkspaces() {
                         }
                         onMouseEnter={() => handleGearMouseEnter(workspace.id)}
                         onMouseLeave={() => handleGearMouseLeave(workspace.id)}
-                        className="rounded-md flex items-center justify-center text-[#A7A8A9] hover:text-white ml-auto"
+                        className="rounded-md flex items-center justify-center text-white hover:text-white ml-auto"
                         aria-label="General appearance settings"
                       >
-                        <div className="flex hover:bg-[#646768] p-[2px] rounded-[4px]">
+                        <div className="flex hover:bg-bs-secondary-active p-[2px] rounded-[4px]">
                           <GearSix
                             color={
                               isInWorkspaceSettings && workspace.slug === slug
                                 ? "#46C8FF"
                                 : gearHover[workspace.id]
                                   ? "#FFFFFF"
-                                  : "#A7A8A9"
+                                  : "#FFFFFF"
                             }
                             weight="bold"
                             className="h-[20px] w-[20px]"

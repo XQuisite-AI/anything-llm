@@ -4,7 +4,7 @@ import { Tooltip } from "react-tooltip";
 import Workspace from "@/models/workspace";
 import showToast from "@/utils/toast";
 
-export default function AsyncTTSMessage({ slug, chatId }) {
+export default function AsyncTTSMessage({ slug, chatId, role = null }) {
   const playerRef = useRef(null);
   const [speaking, setSpeaking] = useState(false);
   const [loading, setLoading] = useState(false);
