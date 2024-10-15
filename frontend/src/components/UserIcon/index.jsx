@@ -2,18 +2,19 @@ import React, { memo } from "react";
 import usePfp from "../../hooks/usePfp";
 import UserDefaultPfp from "./user.svg";
 import WorkspaceDefaultPfp from "./workspace.svg";
+import brandLogo from '../../media/logo/brantas.png';
 
 const UserIcon = memo(({ role }) => {
   const { pfp } = usePfp();
 
   return (
-    <div className="relative w-[35px] h-[35px] rounded-full flex-shrink-0 overflow-hidden">
+    <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden flex items-center justify-center rounded-full bg-white border">
       {role === "user" && <RenderUserPfp pfp={pfp} />}
       {role !== "user" && (
         <img
-          src={WorkspaceDefaultPfp}
-          alt="system profile picture"
-          className="flex items-center justify-center rounded-full border border-white/40"
+          src={brandLogo}
+          alt="Workspace profile picture"
+          className="w-[20px] h-[20px] object-content"
         />
       )}
     </div>

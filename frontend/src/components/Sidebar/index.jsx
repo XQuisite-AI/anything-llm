@@ -25,7 +25,7 @@ export default function Sidebar() {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div className="border-r">
       {/* <Link
         to={paths.home()}
         className="flex shrink-0 max-w-[55%] items-center justify-start mx-[38px] my-[18px]"
@@ -39,7 +39,7 @@ export default function Sidebar() {
       </Link> */}
       <div
         ref={sidebarRef}
-        className="relative m-[16px] rounded-[16px] bg-sidebar min-w-[250px] p-[10px] h-[calc(100%-76px)]"
+        className="relative m-[16px] rounded-[16px] bg-sidebar min-w-[250px] p-[10px] h-full"
       >
         <div className="flex flex-col h-full overflow-x-hidden">
           <div className="flex-grow flex flex-col min-w-[235px]">
@@ -49,10 +49,10 @@ export default function Sidebar() {
                   {(!user || user?.role !== "default") && (
                     <button
                       onClick={showNewWsModal}
-                      className="flex flex-grow w-[75%] h-[44px] gap-x-2 py-[5px] px-2.5 mb-2 bg-bs-primary rounded-[8px] text-white justify-center items-center hover:bg-opacity-80 transition-all duration-300"
+                      className="flex flex-grow w-[75%] h-[52px] gap-x-2 py-[6px] px-[12px] mb-2 bg-bs-primary-active rounded-[8px] text-white justify-center items-center hover:bg-opacity-80 transition-all duration-300"
                     >
                       <Plus size={18} weight="bold" />
-                      <p className="text-sidebar text-sm font-semibold">
+                      <p className="text-sidebar text-lg font-semibold">
                         {t("new-workspace.title")}
                       </p>
                     </button>
@@ -61,7 +61,7 @@ export default function Sidebar() {
                 <ActiveWorkspaces />
               </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 pt-4 pb-3 rounded-b-[16px] bg-sidebar bg-opacity-80 backdrop-filter backdrop-blur-md z-10">
+            <div className="absolute bottom-6 left-0 right-0 pt-4 rounded-b-[16px] bg-sidebar bg-opacity-80 backdrop-filter backdrop-blur-md z-10">
               <Footer />
             </div>
           </div>
@@ -169,7 +169,7 @@ export function SidebarMobileHeader() {
                         className="flex flex-grow w-[75%] h-[44px] gap-x-2 py-[5px] px-4 bg-white rounded-lg text-sidebar justify-center items-center hover:bg-opacity-80 transition-all duration-300"
                       >
                         <Plus className="h-5 w-5" />
-                        <p className="text-sidebar text-sm font-semibold">
+                        <p className="text-sidebar text-lg font-semibold">
                           {t("new-workspace.title")}
                         </p>
                       </button>

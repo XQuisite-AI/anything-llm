@@ -5,6 +5,7 @@ import { Tooltip } from "react-tooltip";
 import Workspace from "@/models/workspace";
 import { EditMessageAction } from "./EditMessage";
 import ActionMenu from "./ActionMenu";
+import TTSMessage from "./TTSButton";
 
 const Actions = ({
   message,
@@ -28,8 +29,14 @@ const Actions = ({
   return (
     <div className="flex w-full justify-between items-center">
       <div className="flex justify-start items-center gap-x-[8px]">
-        <CopyMessage message={message} role={role} />
-        <div className="md:group-hover:opacity-100 transition-all duration-300 md:opacity-0 flex justify-start items-center gap-x-[8px]">
+        <TTSMessage
+          slug={slug}
+          chatId={chatId}
+          message={message}
+          role={role}
+        />
+        <div className={`md:group-hover:opacity-100 transition-all duration-300 md:opacity-0 flex justify-start items-center gap-x-[8px] ${role == 'user' ? 'order-1' : 'order-2'}`}>
+          <CopyMessage message={message} role={role} />
           <EditMessageAction
             chatId={chatId}
             role={role}
@@ -79,7 +86,7 @@ function FeedbackButton({
         onClick={handleFeedback}
         data-tooltip-id={tooltipId}
         data-tooltip-content={tooltipContent}
-        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
+        className={`border-none text-dark-text`}
         aria-label={tooltipContent}
       >
         <IconComponent
@@ -108,7 +115,7 @@ function CopyMessage({ message, role = null }) {
           onClick={() => copyText(message)}
           data-tooltip-id="copy-assistant-text"
           data-tooltip-content="Copy"
-          className={`${role == 'user' ? 'text-dark-text' : 'text-white'}`}
+          className={`text-dark-text`}
           aria-label="Copy"
         >
           {copied ? (
@@ -136,7 +143,7 @@ function RegenerateMessage({ regenerateMessage, chatId, role = null }) {
         onClick={() => regenerateMessage(chatId)}
         data-tooltip-id="regenerate-assistant-text"
         data-tooltip-content="Regenerate response"
-        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
+        className={`border-none text-dark-text`}
         aria-label="Regenerate"
       >
         <ArrowsClockwise size={20} className="mb-1" weight="fill" />

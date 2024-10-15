@@ -66,7 +66,7 @@ export default function ThreadItem({
         {thread.deleted ? (
           <div className="w-full flex justify-between">
             <div className="w-full ">
-              <p className={`text-left text-sm text-slate-400/50 italic`}>
+              <p className={`text-left text-lg text-slate-400/50 italic`}>
                 deleted thread
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function ThreadItem({
             aria-current={isActive ? "page" : ""}
           >
             <p
-              className={`text-left text-sm ${
+              className={`text-left text-lg capitalize ${
                 isActive ? "font-medium text-dark" : "text-slate-400"
               }`}
             >

@@ -262,8 +262,8 @@ export default function ChatContainer({ workspace, knownHistory = [] }) {
 
   return (
     <div
-      style={{ height: isMobile ? "100%" : "calc(100% - 32px)" }}
-      className="transition-all duration-500 relative md:m-[16px] md:rounded-[16px] flex-1 overflow-y-scroll no-scroll bg-white"
+      style={{ height: isMobile ? "100%" : "calc(100%)" }}
+      className="transition-all duration-500 relative flex-1 overflow-y-scroll no-scroll bg-white"
     >
       {isMobile && <SidebarMobileHeader />}
       <DnDFileUploaderWrapper>

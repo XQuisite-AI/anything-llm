@@ -187,9 +187,9 @@ function NewThreadButton({ workspace }) {
         </div>
 
         {loading ? (
-          <p className="text-left text-bs-primary text-sm">Starting Thread...</p>
+          <p className="text-left text-bs-primary text-lg">Starting Thread...</p>
         ) : (
-          <p className="text-left text-bs-primary text-sm">New Thread</p>
+          <p className="text-left text-bs-primary text-lg">New Thread</p>
         )}
       </div>
     </button>

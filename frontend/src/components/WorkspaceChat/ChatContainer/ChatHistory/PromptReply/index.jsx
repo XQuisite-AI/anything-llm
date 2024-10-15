@@ -3,6 +3,7 @@ import { Warning } from "@phosphor-icons/react";
 import UserIcon from "../../../../UserIcon";
 import renderMarkdown from "@/utils/chat/markdown";
 import Citations from "../Citation";
+import brandLogo from '../../../../../media/logo/brantas.png';
 
 const PromptReply = ({
   uuid,
@@ -13,7 +14,7 @@ const PromptReply = ({
   sources = [],
   closed = true,
 }) => {
-  const assistantBackgroundColor = "bg-historical-msg-system";
+  const assistantBackgroundColor = "bg-gray-100 text-dark-text";
   if (!reply && sources.length === 0 && !pending && !error) return null;
 
   if (pending) {
@@ -21,7 +22,7 @@ const PromptReply = ({
       <div
         className={`flex justify-center items-end w-full ${assistantBackgroundColor}`}
       >
-        <div className="py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+        <div className="py-6 px-4 w-full flex gap-x-5 flex-col">
           <div className="flex gap-x-5">
             <WorkspaceProfileImage workspace={workspace} />
             <div className="mt-3 ml-5 dot-falling"></div>
@@ -36,7 +37,7 @@ const PromptReply = ({
       <div
         className={`flex justify-center items-end w-full ${assistantBackgroundColor}`}
       >
-        <div className="py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+        <div className="py-6 px-4 w-full flex gap-x-5 flex-col">
           <div className="flex gap-x-5">
             <WorkspaceProfileImage workspace={workspace} />
             <span
@@ -57,7 +58,7 @@ const PromptReply = ({
       key={uuid}
       className={`flex justify-center items-end w-full ${assistantBackgroundColor}`}
     >
-      <div className="py-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+      <div className="py-6 px-4 w-full flex gap-x-5 flex-col">
         <div className="flex gap-x-5">
           <WorkspaceProfileImage workspace={workspace} />
           <span
@@ -76,7 +77,7 @@ export function WorkspaceProfileImage({ workspace }) {
     return (
       <div className="relative w-[35px] h-[35px] rounded-full flex-shrink-0 overflow-hidden">
         <img
-          src={workspace.pfpUrl}
+          src={brandLogo}
           alt="Workspace profile picture"
           className="absolute top-0 left-0 w-full h-full object-cover rounded-full bg-white"
         />

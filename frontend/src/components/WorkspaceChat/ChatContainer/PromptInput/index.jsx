@@ -133,7 +133,7 @@ export default function PromptInput({
   const watchForAt = debounce(checkForAt, 300);
 
   return (
-    <div className="w-full fixed md:absolute bottom-0 left-0 z-10 md:z-0 flex justify-center items-center">
+    <div className="w-full fixed md:absolute bottom-0 left-0 z-10 md:z-0 flex justify-center items-center border-t">
       <SlashCommands
         showing={showSlashCommand}
         setShowing={setShowSlashCommand}
@@ -149,7 +149,7 @@ export default function PromptInput({
         onSubmit={handleSubmit}
         className="rounded-t-lg w-full items-center"
       >
-        <div className="w-100 border-t-2 border-bs-secondary-hover/50 flex flex-col px-4">
+        <div className="w-100 border-t-2 border-white flex flex-col px-4">
             <AttachmentManager attachments={attachments} />
             <div className="flex items-center w-full gap-2">
               <AttachItem />
@@ -172,7 +172,7 @@ export default function PromptInput({
                   adjustTextArea(e);
                 }}
                 value={promptInput}
-                className="cursor-text max-h-[50vh] md:max-h-[350px] md:min-h-[40px] mx-2 md:mx-0 w-full text-[16px] md:text-md text-bs-primary bg-transparent placeholder:text-dark-text/60 resize-none active:outline-none focus:outline-none flex-grow pt-5"
+                className="cursor-text max-h-[50vh] md:max-h-[350px] md:min-h-[40px] mx-2 md:mx-0 w-full text-[16px] md:text-md text-dark bg-transparent placeholder:text-dark-text/60 resize-none active:outline-none focus:outline-none flex-grow pt-5"
                 placeholder={"Send a message"}
               />
               {buttonDisabled ? (

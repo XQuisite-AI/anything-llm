@@ -50,7 +50,7 @@ export function EditMessageAction({ chatId = null, role, isEditing }) {
         data-tooltip-content={`Edit ${
           role === "user" ? "Prompt" : "Response"
         } `}
-        className={`border-none ${role === 'user' ? 'text-dark-text' : 'text-white'}`}
+        className={`border-none text-dark-text`}
         aria-label={`Edit ${role === "user" ? "Prompt" : "Response"}`}
       >
         <Pencil size={21} className="mb-1" />

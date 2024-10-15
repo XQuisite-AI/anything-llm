@@ -36,14 +36,14 @@ export default function NativeTTSMessage({ message, role = null }) {
   if (!supported) return null;
   
   return (
-    <div className="mt-3 relative">
+    <div className={`mt-3 relative ${role == 'user' ? 'order-2' : 'order-1'}`}>
       <button
         onClick={speakMessage}
         data-tooltip-id="message-to-speech"
         data-tooltip-content={
           speaking ? "Pause TTS speech of message" : "TTS Speak message"
         }
-        className={`border-none ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
+        className={`border-none text-dark-text`}
         aria-label={speaking ? "Pause speech" : "Speak message"}
       >
         {speaking ? (

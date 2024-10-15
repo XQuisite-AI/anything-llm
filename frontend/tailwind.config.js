@@ -25,7 +25,7 @@ export default {
         accent: "#3D4147",
         "sidebar-button": "#3361AC",
         sidebar: "#FFFFFF",
-        "historical-msg-system": "#E8AF30",
+        "historical-msg-system": "#3361AC",
         "historical-msg-user": "#E7E6DD",
         outline: "#4E5153",
         "primary-button": "#46C8FF",
@@ -45,6 +45,7 @@ export default {
         success: "#05603A",
         darker: "#F4F4F4",
         "bs-primary": '#3361AC',
+        "bs-primary-active": '#162F65',
         "bs-secondary": '#E8C766',
         "bs-secondary-active": '#E8AF30',
         "bs-secondary-hover": '#E7E6DD'

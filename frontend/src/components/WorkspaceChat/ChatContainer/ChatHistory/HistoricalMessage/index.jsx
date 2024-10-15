@@ -48,7 +48,7 @@ const HistoricalMessage = ({
           role === "user" ? USER_BACKGROUND_COLOR : AI_BACKGROUND_COLOR
         }`}
       >
-        <div className="py-8 px-4 w-full flex gap-x-5 flex-col">
+        <div className="py-8 w-full flex gap-x-5 flex-col">
           <div className="flex gap-x-5">
             <ProfileImage role={role} workspace={workspace} />
             <div className="p-2 rounded-lg bg-red-50 text-red-500">
@@ -74,23 +74,21 @@ const HistoricalMessage = ({
       className={`${
         isDeleted ? "animate-remove" : ""
       } flex justify-center items-end group mb-3 md:rounded-[16px] w-[80%] ${
-        role === "user" ? USER_BACKGROUND_COLOR : AI_BACKGROUND_COLOR
-      } ${
         role === "user" ? 'self-end' : ''
       }`}
     >
-      <div className="py-8 px-4 w-full flex gap-x-5 flex-col">
-        <div className="flex gap-x-5">
-          <div className="flex flex-col items-center">
+      <div className="py-8 w-full flex gap-x-5 flex-col">
+        <div className={`flex gap-x-5 ${role === 'user' ? 'self-end' : ''}`}>
+          <div className={`flex flex-col items-center self-end ${role === 'user' ? 'order-2' : 'order-1'}`}>
             <ProfileImage role={role} workspace={workspace} />
-            <div className="mt-1 -mb-10">
+            {/* <div className="mt-1 -mb-10">
               <TTSMessage
                 slug={workspace?.slug}
                 chatId={chatId}
                 message={message}
                 role={role}
               />
-            </div>
+            </div> */}
           </div>
           {isEditing ? (
             <EditMessageForm
@@ -102,9 +100,13 @@ const HistoricalMessage = ({
               saveChanges={saveEditedMessage}
             />
           ) : (
-            <div className="overflow-x-scroll break-words no-scroll">
+            <div
+              className={`overflow-x-scroll break-words no-scroll flex-grow p-3 rounded-xl
+                ${role === 'user' ? 'bg-bs-secondary-hover rounded-br-none order-1' : 'bg-bs-primary rounded-bl-none order-2'}
+                `}
+            >
               <span
-                className={`flex flex-col gap-y-1 ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
+                className={`flex flex-col gap-y-1 text-xl ${role == 'user' ? 'text-dark-text' : 'text-white'}`}
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(renderMarkdown(message)),
                 }}
@@ -113,7 +115,7 @@ const HistoricalMessage = ({
             </div>
           )}
         </div>
-        <div className="flex gap-x-5 ml-14">
+        <div className={`flex gap-x-5 ${role === 'user' ? 'self-end mr-14' : 'ml-14'}`}>
           <Actions
             message={message}
             feedbackScore={feedbackScore}
@@ -133,11 +135,9 @@ const HistoricalMessage = ({
 };
 
 function ProfileImage({ role, workspace }) {
-  console.log(role, brandLogo, workspace.pfpUrl);
-  
   if (role === "assistant") {
     return (
-      <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden flex items-center justify-center rounded-full bg-white">
+      <div className="relative w-[35px] h-[35px] rounded-full overflow-hidden flex items-center justify-center rounded-full bg-white border">
         <img
           src={brandLogo}
           alt="Workspace profile picture"

@@ -94,11 +94,11 @@ export default function ActiveWorkspaces() {
                 className={`
               transition-all duration-[200ms]
                 flex flex-grow w-[75%] gap-x-2 py-[6px] px-[12px] rounded-[4px]  justify-start items-center
-                hover:bg-bs-secondary hover:font-bold border-2 border-bs-secondary
+                hover:bg-bs-secondary-active border-2 border-bs-secondary/10
                 ${
                   isActive
-                    ? "text-white bg-bs-secondary font-bold"
-                    : "text-dark-text bg-bs-secondary-hover"
+                    ? "text-white bg-bs-secondary-active"
+                    : "text-dark-text bg-bs-secondary/10"
                 }`}
               >
                 <div className="flex flex-row justify-between w-full">
@@ -109,7 +109,7 @@ export default function ActiveWorkspaces() {
                       size={24}
                     />
                     <p
-                      className={`text-[14px] leading-loose whitespace-nowrap overflow-hidden ${
+                      className={`text-lg leading-loose whitespace-nowrap overflow-hidden ${
                         isActive ? "text-white " : "text-dark-text"
                       }`}
                     >
