@@ -145,7 +145,7 @@ export default function AdminAgents() {
 
           {/* Skill settings nav */}
           <div hidden={showSkillModal} className="flex flex-col gap-y-[18px]">
-            <div className="text-white flex items-center gap-x-2">
+            <div className="text-dark-text flex items-center gap-x-2">
               <Robot size={24} />
               <p className="text-lg font-medium">Agent Skills</p>
             </div>
@@ -170,7 +170,7 @@ export default function AdminAgents() {
               activeSkills={agentSkills}
             />
 
-            <div className="text-white flex items-center gap-x-2">
+            <div className="text-dark-text flex items-center gap-x-2">
               <Plug size={24} />
               <p className="text-lg font-medium">Custom Skills</p>
             </div>
@@ -260,7 +260,7 @@ export default function AdminAgents() {
 
         {/* Skill settings nav */}
         <div className="flex flex-col gap-y-[18px]">
-          <div className="text-white flex items-center gap-x-2">
+          <div className="text-dark-text flex items-center gap-x-2">
             <Robot size={24} />
             <p className="text-lg font-medium">Agent Skills</p>
           </div>
@@ -280,7 +280,7 @@ export default function AdminAgents() {
             activeSkills={agentSkills}
           />
 
-          <div className="text-white flex items-center gap-x-2">
+          <div className="text-dark-text flex items-center gap-x-2">
             <Plug size={24} />
             <p className="text-lg font-medium">Custom Skills</p>
           </div>
@@ -362,7 +362,7 @@ function SkillList({
 
   return (
     <div
-      className={`bg-white/5 text-white rounded-xl ${
+      className={`bg-white/5 text-dark-text rounded-xl ${
         isMobile ? "w-full" : "min-w-[360px] w-fit"
       }`}
     >

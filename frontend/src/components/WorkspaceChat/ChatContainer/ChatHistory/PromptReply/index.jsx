@@ -75,7 +75,7 @@ const PromptReply = ({
 export function WorkspaceProfileImage({ workspace }) {
   if (!!workspace.pfpUrl) {
     return (
-      <div className="relative w-[35px] h-[35px] rounded-full flex-shrink-0 overflow-hidden">
+      <div className="relative w-[35px] h-[35px] rounded-full flex-shrink-0 overflow-hidden self-end">
         <img
           src={brandLogo}
           alt="Workspace profile picture"

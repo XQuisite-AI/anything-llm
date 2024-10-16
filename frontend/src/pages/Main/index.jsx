@@ -26,14 +26,12 @@ export default function Main() {
       <Header 
         isCollapsed={isCollapsed} 
         setIsCollapsed={setIsCollapsed} 
-        toggleSidebar={toggleSidebar} 
+        toggleSidebar={toggleSidebar}
       />
-      <UserMenu>
         <div className="w-screen h-screen overflow-hidden bg-sidebar flex" style={{ height: `calc(100vh - 65px)` }}>
           {!isMobile && isSidebarVisible && <Sidebar />} {/* Conditionally render Sidebar */}
           <DefaultChatContainer />
         </div>
-      </UserMenu>
     </>
   );
 }

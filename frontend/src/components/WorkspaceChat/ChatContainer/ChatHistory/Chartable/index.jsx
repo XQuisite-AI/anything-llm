@@ -75,8 +75,8 @@ export function Chartable({ props, workspace }) {
     switch (chartType) {
       case "area":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             <AreaChart
               className="h-[350px]"
               data={data}
@@ -90,8 +90,8 @@ export function Chartable({ props, workspace }) {
         );
       case "bar":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             <BarChart
               className="h-[350px]"
               data={data}
@@ -107,8 +107,8 @@ export function Chartable({ props, workspace }) {
         );
       case "line":
         return (
-          <div className="bg-zinc-900 p-8 pb-12 rounded-xl text-white h-[500px] w-full">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 pb-12 rounded-xl text-white h-[500px] w-full">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             <LineChart
               className="h-[400px]"
               data={data}
@@ -122,8 +122,8 @@ export function Chartable({ props, workspace }) {
         );
       case "composed":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <Legend
                 categories={[value]}
@@ -178,8 +178,8 @@ export function Chartable({ props, workspace }) {
         );
       case "scatter":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <div className="flex justify-end">
                 <Legend
@@ -224,8 +224,8 @@ export function Chartable({ props, workspace }) {
         );
       case "pie":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             <DonutChart
               data={data}
               category={value}
@@ -248,8 +248,8 @@ export function Chartable({ props, workspace }) {
         );
       case "radar":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <div className="flex justify-end">
                 <Legend
@@ -282,8 +282,8 @@ export function Chartable({ props, workspace }) {
         );
       case "radialbar":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <div className="flex justify-end">
                 <Legend
@@ -317,8 +317,8 @@ export function Chartable({ props, workspace }) {
         );
       case "treemap":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <div className="flex justify-end">
                 <Legend
@@ -343,8 +343,8 @@ export function Chartable({ props, workspace }) {
         );
       case "funnel":
         return (
-          <div className="bg-zinc-900 p-8 rounded-xl text-white">
-            <h3 className="text-lg font-medium">{title}</h3>
+          <div className="p-8 rounded-xl text-white rounded-bl-none bg-bs-primary">
+            <h3 className="text-lg font-medium mb-3">{title}</h3>
             {showLegend && (
               <div className="flex justify-end">
                 <Legend
@@ -367,15 +367,15 @@ export function Chartable({ props, workspace }) {
 
   if (!!props.chatId) {
     return (
-      <div className="flex justify-center items-end w-full">
-        <div className="py-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+      <div className=" flex justify-center items-end group mb-3 md:rounded-[16px] w-[80%]">
+        <div className="w-full flex gap-x-5 flex-col">
           <div className="flex gap-x-5">
             <WorkspaceProfileImage workspace={workspace} />
-            <div className="relative w-full">
+            <div className="relative flex gap-x-5 bg-bs-primary rounded-xl rounded-bl-none">
               <DownloadGraph onClick={handleDownload} />
-              <div ref={ref}>{renderChart()}</div>
+              <div className="flex-grow" ref={ref}>{renderChart()}</div>
               <span
-                className={`flex flex-col gap-y-1 mt-2`}
+                className={`flex flex-col gap-y-1 mt-2 pr-12`}
                 dangerouslySetInnerHTML={{
                   __html: renderMarkdown(content.caption),
                 }}
@@ -383,16 +383,33 @@ export function Chartable({ props, workspace }) {
             </div>
           </div>
         </div>
+        <style>
+          {`
+            .fill-tremor-content-emphasis, 
+            .dark\\:fill-dark-tremor-content-emphasis {
+              fill: white !important; /* Set the text color to white */
+            }
+
+            .markdown ul{
+              padding-left: 1rem;
+            }
+
+            .markdown table{
+              color: #FFFFFF;
+            }
+          `}
+        </style>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-center items-end w-full">
-      <div className="py-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
-        <div className="relative w-full">
+    <div className=" flex justify-center items-end group mb-3 md:rounded-[16px] w-[80%]">
+      <div className="w-full flex gap-x-5 flex-col">
+        <div className="relative flex gap-x-5">
+          <WorkspaceProfileImage workspace={workspace} />
           <DownloadGraph onClick={handleDownload} />
-          <div ref={ref}>{renderChart()}</div>
+          <div className="flex-grow" ref={ref}>{renderChart()}</div>
         </div>
         <div className="flex gap-x-5">
           <span
@@ -403,6 +420,22 @@ export function Chartable({ props, workspace }) {
           />
         </div>
       </div>
+      <style>
+        {`
+          .fill-tremor-content-emphasis, 
+          .dark\\:fill-dark-tremor-content-emphasis {
+            fill: white !important; /* Set the text color to white */
+          }
+
+          .markdown ul{
+            padding-left: 1rem;
+          }
+
+          .markdown table{
+            color: #FFFFFF;
+          }
+        `}
+      </style>
     </div>
   );
 }

@@ -52,7 +52,7 @@ markdown.renderer.rules.image = function (tokens, idx) {
   const srcIndex = token.attrIndex("src");
   const src = token.attrs[srcIndex][1];
   const alt = token.content || "";
-
+  if (src.includes("chart")) return '<div></div>'
   return `<div class="w-full max-w-[800px]"><img src="${src}" alt="${alt}" class="w-full h-auto" /></div>`;
 };
 

@@ -54,7 +54,7 @@ export default function UserButton() {
 
   if (mode === null) return null;
   return (
-    <div className="absolute top-3 right-4 md:top-9 md:right-10 w-fit h-fit z-99">
+    <div className="absolute top-0 right-0 p-4 w-fit h-fit z-99">
       <button
         ref={buttonRef}
         onClick={() => setShowMenu(!showMenu)}
@@ -65,37 +65,39 @@ export default function UserButton() {
       </button>
 
       {showMenu && (
-        <div
-          ref={menuRef}
-          className="w-fit rounded-lg absolute top-12 right-0 bg-sidebar p-4 flex items-center-justify-center"
-        >
-          <div className="flex flex-col gap-y-2">
-            {mode === "multi" && !!user && (
-              <button
-                onClick={handleOpenAccountModal}
-                className="text-white hover:bg-slate-200/20 w-full text-left px-4 py-1.5 rounded-md"
+        <div className="relative">
+          <div
+            ref={menuRef}
+            className="w-fit rounded-lg absolute right-0 bg-sidebar p-4 flex items-center-justify-center shadow"
+          >
+            <div className="flex flex-col gap-y-2">
+              {mode === "multi" && !!user && (
+                <button
+                  onClick={handleOpenAccountModal}
+                  className="text-dark-text hover:bg-dark-text/20 w-full text-left px-4 py-1.5 rounded-md"
+                >
+                  Account
+                </button>
+              )}
+              <a
+                href={supportEmail}
+                className="text-dark-text hover:bg-dark-text/20 w-full text-left px-4 py-1.5 rounded-md"
               >
-                Account
+                Support
+              </a>
+              <button
+                onClick={() => {
+                  window.localStorage.removeItem(AUTH_USER);
+                  window.localStorage.removeItem(AUTH_TOKEN);
+                  window.localStorage.removeItem(AUTH_TIMESTAMP);
+                  window.location.replace(paths.home());
+                }}
+                type="button"
+                className="text-dark-text hover:bg-dark-text/20 w-full text-left px-4 py-1.5 rounded-md"
+              >
+                Sign out
               </button>
-            )}
-            <a
-              href={supportEmail}
-              className="text-white hover:bg-slate-200/20 w-full text-left px-4 py-1.5 rounded-md"
-            >
-              Support
-            </a>
-            <button
-              onClick={() => {
-                window.localStorage.removeItem(AUTH_USER);
-                window.localStorage.removeItem(AUTH_TOKEN);
-                window.localStorage.removeItem(AUTH_TIMESTAMP);
-                window.location.replace(paths.home());
-              }}
-              type="button"
-              className="text-white hover:bg-slate-200/20 w-full text-left px-4 py-1.5 rounded-md"
-            >
-              Sign out
-            </button>
+            </div>
           </div>
         </div>
       )}

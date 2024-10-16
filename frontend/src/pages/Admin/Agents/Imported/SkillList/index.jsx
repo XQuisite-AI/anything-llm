@@ -9,7 +9,7 @@ export default function ImportedSkillList({
 }) {
   if (skills.length === 0)
     return (
-      <div className="text-white/60 text-center text-xs flex flex-col gap-y-2">
+      <div className="text-dark-text/60 text-center text-xs flex flex-col gap-y-2">
         <p>No imported skills found</p>
         <p>
           Learn about agent skills in the{" "}
@@ -27,7 +27,7 @@ export default function ImportedSkillList({
 
   return (
     <div
-      className={`bg-white/5 text-white rounded-xl ${
+      className={`bg-white/5 text-dark-text rounded-xl ${
         isMobile ? "w-full" : "min-w-[360px] w-fit"
       }`}
     >
