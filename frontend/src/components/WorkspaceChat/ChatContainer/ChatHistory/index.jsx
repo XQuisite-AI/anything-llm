@@ -216,7 +216,7 @@ export default function ChatHistory({
           index === history.length - 1 && props.role === "assistant";
 
         if (props?.type === "statusResponse" && !!props.content) {
-          return <StatusResponse key={props.uuid} props={props} />;
+          return (isLastBotReply)?<StatusResponse key={props.uuid} props={props} />:"";
         }
 
         if (props.type === "rechartVisualize" && !!props.content) {
@@ -226,6 +226,7 @@ export default function ChatHistory({
         }
 
         if (isLastBotReply && props.animate) {
+          scrollToBottom(true);
           return (
             <PromptReply
               key={props.uuid}
@@ -281,8 +282,43 @@ export default function ChatHistory({
 }
 
 function StatusResponse({ props }) {
-  return 
+  return (
+    <div className="flex justify-center items-end w-full">
+      <div className="py-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+        <div className="flex gap-x-5">
+        <div className="mt-3 ml-5 dot-falling"></div>
+          <span
+            className={`text-xs inline-block p-2 rounded-lg text-black/60 font-mono whitespace-pre-line`}
+          >
+          </span>
+        </div>
+      </div>
+    </div>
+     
+  );
 }
+
+// function StatusResponseAlt({ props }) {
+//   const [content, setContent] = useState(props.content);
+
+
+//   useEffect(() => {
+//     setContent(props.content); // Memperbarui state saat props.content berubah
+//   }, [props.content]);
+
+//   return (
+//     <div className="flex justify-center items-end w-full">
+//       <div className="py-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col">
+//         <div className="flex gap-x-5">
+//           <div className="mt-3 ml-5 dot-falling"></div>
+//           <span className={`text-xs inline-block p-2 rounded-lg text-black/60 font-mono whitespace-pre-line`}>
+//             {content}
+//           </span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 function WorkspaceChatSuggestions({ suggestions = [], sendSuggestion }) {
   if (suggestions.length === 0) return null;
